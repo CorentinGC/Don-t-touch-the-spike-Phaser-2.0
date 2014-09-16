@@ -163,7 +163,8 @@ module.exports = Menu;
     },
     update: function() {
 
-      this.game.physics.arcade.collide(this.spikeTop, this.player, this.die, null, this);
+      // Collision entre le player et le spikeTop et spikeBottom, lance this.die à la collision
+      this.game.physics.arcade.collide(this.spikeTop, this.player, this.die, null, this); 
       this.game.physics.arcade.collide(this.spikeBottom, this.player, this.die, null, this);
 
       // Si le player est en vie
@@ -196,7 +197,6 @@ module.exports = Menu;
       if(!this.isDead){
           // Le player est mort
           this.isDead = true;
-          console.log('mort');
 
           // On arrête le mouvement du player
           this.player.body.velocity.x = 0;
@@ -212,7 +212,6 @@ module.exports = Menu;
           var buttonMenu = this.game.add.button(this.game.world.centerX, this.game.world.centerY+50, 'buttonmenu', this.menu, this, 2, 1, 0);
           buttonMenu.anchor.setTo(0.5, 0.5);
       }
-      //this.game.state.start('gameover');
     },
     // ## Score
     score : function() {
